@@ -26,9 +26,6 @@ as per .env.example file.
 
 ![Login](img/login.png)
 
-#### Signup Page 
-![Signup Page](img/signup.png)
-
 #### Signup Page
 ![Signup Page](img/signup.png)
 
