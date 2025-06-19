@@ -49,28 +49,29 @@
             let password = document.getElementById('password').value;
 
             const xhttp = new XMLHttpRequest();
-            xhttp.open('POST', basePath+'/api/user/login');
+            xhttp.open('POST', basePath + '/api/user/login');
             xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-            xhttp.send(
-                JSON.stringify({
-                email,
-                password,
-            }));
-            
-            xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                const objects = JSON.parse(this.responseText);
-                if (objects.token) {
-                    localStorage.setItem('jwt', objects.token);
-                    window.location.href = '/view/restaurants/';
-                } else {
-                    console.log('Error while fetching token');
-                    window.location.href = '/';
-                }
-            }
-            }
-            email = password = '';
+            xhttp.send(JSON.stringify({ email, password }));
 
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        const response = JSON.parse(this.responseText);
+                        if (response.token) {
+                            localStorage.setItem('jwt', response.token);
+                            window.location.href = '/view/restaurants/';
+                        }
+                    } else if (this.status === 401) {
+                        const errorResponse = JSON.parse(this.responseText);
+                        alert(errorResponse.error || 'Invalid email or password');
+                    } else {
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            };
+
+            // Clear input fields after submitting
+            email = password = '';
         });
     </script>
 </div>

@@ -1,7 +1,7 @@
 {
 	"name": "sample_restaurant",
 	"version": "1.0.0",
-	"description": "node application for sample restaurant",
+	"description": "A Node.js-based sample restaurant application with authentication and MongoDB integration",
 	"main": "app.js",
 	"scripts": {
 		"start": "node app.js",
@@ -10,17 +10,20 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/WebFramework1/sample_restaurant.git"
+		"url": "https://github.com/manojkrr/sample_restaurant"
 	},
 	"author": "Manoj Kumar, Sumit Bopche",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/WebFramework1/sample_restaurant/issues"
+		"url": "https://github.com/manojkrr/sample_restaurant/issues"
 	},
-	"homepage": "https://github.com/WebFramework1/sample_restaurant#readme",
+	"homepage": "https://github.com/manojkrr/sample_restaurant#readme",
+	"engines": {
+		"node": ">=16.0.0"
+	},
 	"dependencies": {
 		"axios": "^1.2.1",
-		"bcrypt": "^5.1.0",
+		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.20.1",
 		"celebrate": "^15.0.1",
 		"dotenv": "^16.0.3",
@@ -30,7 +33,7 @@
 		"handlebars": "^4.7.7",
 		"joi": "^17.7.0",
 		"jsonwebtoken": "^9.0.0",
-		"mongoose": "^6.7.3",
+		"mongoose": "^8.16.0",
 		"passport": "^0.6.0",
 		"passport-jwt": "^4.0.0",
 		"passport-local": "^1.0.0"

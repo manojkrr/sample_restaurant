@@ -19,13 +19,14 @@ router.post(
 );
 
 router.post('/login', async (req, res, next) => {
-  // eslint-disable-next-line no-unused-vars
   passport.authenticate('login', async (err, user, info) => {
     try {
-      if (err || !user) {
-        const error = new Error('An error occurred.');
-
-        return next(error);
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        // This means invalid credentials
+        return res.status(401).json({ error: info?.message || 'Invalid email or password' });
       }
 
       req.login(user, { session: false }, async (error) => {

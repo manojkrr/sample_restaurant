@@ -42,7 +42,7 @@ async function getMultiple(queryParams = {}) {
     .limit(numberOfDocuments)
     .lean();
   const data = helper.emptyOrRows(rows);
-  const totalPages = (await Restaurants.count()) / config.listPerPage;
+  const totalPages = (await Restaurants.countDocuments()) / config.listPerPage;
   const meta = {
     page,
     limit: totalPages,
